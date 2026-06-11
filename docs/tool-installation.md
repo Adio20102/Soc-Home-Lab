@@ -22,7 +22,7 @@ curl -sO https://packages.wazuh.com/4.14/wazuh-install.sh && sudo bash ./wazuh-i
 
 The installer runs through several stages automatically — indexer, manager, Filebeat (internal), and dashboard. At the end it prints the dashboard credentials. **Save them immediately — they are shown once.**
 
-![Wazuh AIO Installation](../screenshots/wazuh install.png)
+![Wazuh AIO Installation](<https://github.com/Adio20102/Soc-Home-Lab/blob/7040d47cdf28520da6f1f4818e6b081fcb9a2633/screenshots/wazuh%20install%20.png>)
 
 Installation completes in approximately 10–15 minutes. When finished:
 
