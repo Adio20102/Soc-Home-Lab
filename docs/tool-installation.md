@@ -57,7 +57,7 @@ sudo systemctl enable wazuh-agent
 sudo systemctl start wazuh-agent
 ```
 
-![Wazuh Agent Install Ubuntu](../screenshots/wazuh-setup/wazuh-agent-install-ubuntu.png)
+![Wazuh Agent Install Ubuntu](<https://github.com/Adio20102/Soc-Home-Lab/blob/6784ed6613579395d746dbe03bea20630fed4c65/screenshots/wazuh%20agent%20install%20secure%20agent.png>)
 
 Confirm the agent appears in the Wazuh dashboard under **Agents** with status **Active**.
 
@@ -262,7 +262,7 @@ Download `elasticsearch-9.4.2-amd64.deb` from [elastic.co](https://www.elastic.c
 sudo apt install ./elasticsearch-9.4.2-amd64.deb
 ```
 
-![Elasticsearch Install](../screenshots/elk-setup/elasticsearch-install.png)
+![Elasticsearch Install](<https://github.com/Adio20102/Soc-Home-Lab/blob/6784ed6613579395d746dbe03bea20630fed4c65/screenshots/ELKsearch%20install.png>)
 
 > **Critical:** The install output shows the generated `elastic` superuser password **once**. Copy it immediately.
 > ```
@@ -291,7 +291,7 @@ sudo systemctl status elasticsearch.service
 sudo apt install ./kibana-9.4.2-amd64.deb
 ```
 
-![Kibana Install](../screenshots/elk-setup/kibana-install.png)
+![Kibana Install](<https://github.com/Adio20102/Soc-Home-Lab/blob/6784ed6613579395d746dbe03bea20630fed4c65/screenshots/Kibana%20Install.png>)
 
 Configure `/etc/kibana/kibana.yml`:
 
@@ -307,7 +307,7 @@ cd /usr/share/elasticsearch/bin
 ./elasticsearch-create-enrollment-token --scope kibana
 ```
 
-![Generate Enrollment Token](../screenshots/elk-setup/elasticsearch-enrollment-token.png)
+![Generate Enrollment Token](<https://github.com/Adio20102/Soc-Home-Lab/blob/6784ed6613579395d746dbe03bea20630fed4c65/screenshots/Elasticsearch%20create%20enrollement%20token.png>)
 
 Copy the full token string.
 
@@ -315,7 +315,7 @@ Copy the full token string.
 
 Open `http://192.168.56.70:5601` in a browser. You will see the **Configure Elastic to get started** screen. Paste the enrollment token.
 
-![Enter Enrollment Token](../screenshots/elk-setup/kibana-enter-enrollment-token.png)
+![Enter Enrollment Token](<https://github.com/Adio20102/Soc-Home-Lab/blob/46a3d55704c6bec8727c073f197b82f29d0c21b1/screenshots/Enter%20ELKsearch%20enrollement%20token%20in%20kibana.png>)
 
 Generate the Kibana verification code on S5:
 
@@ -323,7 +323,7 @@ Generate the Kibana verification code on S5:
 /usr/share/kibana/bin/kibana-verification-code
 ```
 
-![Kibana Verification Code](../screenshots/elk-setup/kibana-verification-code.png)
+![Kibana Verification Code](<https://github.com/Adio20102/Soc-Home-Lab/blob/46a3d55704c6bec8727c073f197b82f29d0c21b1/screenshots/kibana%20verification%20code.png>)
 
 Enter the code in the browser prompt to complete the connection.
 
@@ -334,7 +334,7 @@ cd /usr/share/kibana/bin
 ./kibana-encryption-keys generate
 ```
 
-![Generate Encryption Keys](../screenshots/elk-setup/kibana-encryption-keys-generate.png)
+![Generate Encryption Keys](<https://github.com/Adio20102/Soc-Home-Lab/blob/46a3d55704c6bec8727c073f197b82f29d0c21b1/screenshots/Invoke%20kibana%20encryption%20keys.png>)
 
 This outputs three key name/value pairs. Add each to the Kibana keystore:
 
@@ -344,7 +344,7 @@ This outputs three key name/value pairs. Add each to the Kibana keystore:
 ./kibana-keystore add xpack.security.encryptionKey
 ```
 
-![Add Keys to Keystore](../screenshots/elk-setup/kibana-keystore-add-keys.png)
+![Add Keys to Keystore](<https://github.com/Adio20102/Soc-Home-Lab/blob/46a3d55704c6bec8727c073f197b82f29d0c21b1/screenshots/add%20kibana%20encryption%20key%20in%20kibana%20keystore.png>)
 
 ```bash
 sudo systemctl restart kibana
@@ -358,7 +358,7 @@ sudo systemctl restart kibana
 sudo apt install ./logstash-9.4.2-amd64.deb
 ```
 
-![Logstash Install](../screenshots/elk-setup/logstash-install.png)
+![Logstash Install](<https://github.com/Adio20102/Soc-Home-Lab/blob/46a3d55704c6bec8727c073f197b82f29d0c21b1/screenshots/Logstash%20install.png>)
 
 Create the pipeline config at `/etc/logstash/conf.d/suricata.conf`:
 
@@ -385,7 +385,7 @@ output {
 }
 ```
 
-![Logstash Pipeline Config](../screenshots/elk-setup/logstash-suricata-conf.png)
+![Logstash Pipeline Config](https://github.com/Adio20102/Soc-Home-Lab/blob/46a3d55704c6bec8727c073f197b82f29d0c21b1/screenshots/surcata%20conf%20inside%20logstash%20confd.png)
 
 > `ssl_certificate_verification => false` is used because Elasticsearch 9.x enables TLS by default and the lab uses a self-signed certificate. Acceptable in an isolated lab environment.
 
@@ -410,7 +410,7 @@ Filebeat is Elastic's native log shipper. It runs on Kali and tails `eve.json`, 
 sudo apt install ./filebeat-9.4.2-amd64.deb
 ```
 
-![Filebeat Install](../screenshots/elk-setup/filebeat-install.png)
+![Filebeat Install](<https://github.com/Adio20102/Soc-Home-Lab/blob/46a3d55704c6bec8727c073f197b82f29d0c21b1/screenshots/filebeat%20install.png>)
 
 ### 6.3 Enable the Suricata Module
 
@@ -420,9 +420,9 @@ ls                                  # all modules listed as .disabled by default
 sudo filebeat modules enable suricata
 ```
 
-![Enable Suricata Module](../screenshots/elk-setup/filebeat-enable-suricata-module.png)
+![Enable Suricata Module](https://github.com/Adio20102/Soc-Home-Lab/blob/46a3d55704c6bec8727c073f197b82f29d0c21b1/screenshots/enable%20suricata%20module%20in%20filebeat%20modules%20directory.png)
 
-### 6.4 Configure the Suricata Module
+### 6.4 Configure the Suricata Module in Logstash
 
 Edit `/etc/filebeat/modules.d/suricata.yml`:
 
@@ -433,23 +433,27 @@ Edit `/etc/filebeat/modules.d/suricata.yml`:
     var.paths: ["/var/log/suricata/eve.json"]
 ```
 
-![Suricata Module Config](../screenshots/elk-setup/filebeat-suricata-module-config.png)
+![Suricata Module Config](<https://github.com/Adio20102/Soc-Home-Lab/blob/46a3d55704c6bec8727c073f197b82f29d0c21b1/screenshots/create%20%26%20config%20suricata%20conf%20in%20logstash%20conf.d.png>)
 
 ### 6.5 Configure filebeat.yml
 
 Two things to set in `/etc/filebeat/filebeat.yml`:
 
-**Disable the default filestream input** (module handles input):
+**Disable the default filestream input** (Module approach used):
 
 ```yaml
 filebeat.inputs:
   - type: filestream
-    enabled: false       # module approach is used instead
+    enabled: false       # Disabled by default
 ```
 
-![Filebeat Input Disabled](../screenshots/elk-setup/filebeat-yml-input-disabled.png)
+**Enable the default filesbeat module reload** :
 
-**Set output to Logstash** (only one output block can be active at a time):
+```yaml
+reload.enabled: true
+```
+
+**Set output to Logstash** (Only one output block can be active at a time):
 
 ```yaml
 output.logstash:
@@ -458,7 +462,7 @@ output.logstash:
 # output.elasticsearch is commented out — only one output block works at a time
 ```
 
-![Filebeat Output Config](../screenshots/elk-setup/filebeat-yml-output-logstash.png)
+![Filebeat Output Config](<https://github.com/Adio20102/Soc-Home-Lab/blob/46a3d55704c6bec8727c073f197b82f29d0c21b1/screenshots/filebeat%20yml%20config%202%2C%20only%201%20output%20block%20works%20at%20a%20time.png>)
 
 ### 6.6 Verify Connection
 
@@ -478,7 +482,7 @@ logstash: 192.168.56.70:5044...
   talk to server... OK
 ```
 
-![Filebeat Test Output](../screenshots/elk-setup/filebeat-test-output.png)
+![Filebeat Test Output](<https://github.com/Adio20102/Soc-Home-Lab/blob/a0991e215a734763ecf7f8eb32be40d6fa83d267/screenshots/verify%20filebeat%20connection.png>)
 
 Enable and start:
 
@@ -491,7 +495,7 @@ sudo systemctl start filebeat
 
 Go to `http://192.168.56.70:5601` → **Stack Management → Data Views → Create data view**
 
-![Create Data View](../screenshots/elk-setup/kibana-create-data-view.png)
+![Create Data View](<https://github.com/Adio20102/Soc-Home-Lab/blob/a0991e215a734763ecf7f8eb32be40d6fa83d267/screenshots/kibana%20create%20data%20view.png>)
 
 | Field | Value |
 |---|---|
