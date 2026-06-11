@@ -377,15 +377,13 @@ filter {
 output {
   elasticsearch {
     hosts => ["https://192.168.56.70:9200"]
-    index => "suricata-%{+YYYY.MM.dd}"
     user => "elastic"
     password => "NXa5FUpWc2PTIZUJnQZz"   # replace with your generated password
     ssl_verification_mode => "none"
+    index => "suricata-%{+YYYY.MM.dd}"
   }
 }
 ```
-
-![Logstash Pipeline Config](<https://github.com/Adio20102/Soc-Home-Lab/blob/6430753eba9096a5967bbf9cfabadcc0f5849c76/screenshots/Suricata%20conf%20inside%20logstash%20confd.png>)
 
 > `ssl_verification_mode => "none"` is used because the lab environment uses self-signed SSL/TLS certificates, which will cause the Logstash connection to fail if strict validation is turned on. Disabling verification allows Logstash to successfully ship logs over HTTPS without needing to explicitly trust a custom Certificate Authority (CA) chain.
 
