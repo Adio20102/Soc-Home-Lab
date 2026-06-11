@@ -22,7 +22,7 @@ curl -sO https://packages.wazuh.com/4.14/wazuh-install.sh && sudo bash ./wazuh-i
 
 The installer runs through several stages automatically — indexer, manager, Filebeat (internal), and dashboard. At the end it prints the dashboard credentials. **Save them immediately — they are shown once.**
 
-![Wazuh AIO Installation](../screenshots/wazuh-setup/wazuh-aio-install.png)
+![Wazuh AIO Installation](../screenshots/wazuh install.png)
 
 Installation completes in approximately 10–15 minutes. When finished:
 
@@ -58,11 +58,6 @@ sudo systemctl start wazuh-agent
 ```
 
 ![Wazuh Agent Install Ubuntu](../screenshots/wazuh-setup/wazuh-agent-install-ubuntu.png)
-
-> A CentOS/RPM variant is also available if deploying on Red Hat-based systems:
-> `curl -o wazuh-agent.rpm https://packages.wazuh.com/4.x/yum/wazuh-agent-4.14.4-1.x86_64.rpm && sudo WAZUH_MANAGER='192.168.56.40' WAZUH_AGENT_NAME='centos-agent' rpm -ihv wazuh-agent-4.14.4-1.x86_64.rpm`
-
-![Wazuh Agent Install CentOS](../screenshots/wazuh-setup/wazuh-agent-install-centos.png)
 
 Confirm the agent appears in the Wazuh dashboard under **Agents** with status **Active**.
 
