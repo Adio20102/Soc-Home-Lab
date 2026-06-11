@@ -385,7 +385,7 @@ output {
 }
 ```
 
-![Logstash Pipeline Config](<https://github.com/Adio20102/Soc-Home-Lab/blob/3c0d037ede819ecd2b0519e46c400e4e598e25fa/screenshots/create%20%26%20config%20suricata%20conf%20in%20logstash%20conf.d.png>)
+![Logstash Pipeline Config](<https://github.com/Adio20102/Soc-Home-Lab/blob/6430753eba9096a5967bbf9cfabadcc0f5849c76/screenshots/Suricata%20conf%20inside%20logstash%20confd.png>)
 
 > `ssl_certificate_verification => false` is used because Elasticsearch 9.x enables TLS by default and the lab uses a self-signed certificate. Acceptable in an isolated lab environment.
 
@@ -432,8 +432,6 @@ Edit `/etc/filebeat/modules.d/suricata.yml`:
     enabled: true
     var.paths: ["/var/log/suricata/eve.json"]
 ```
-
-![Suricata Module Config](<https://github.com/Adio20102/Soc-Home-Lab/blob/46a3d55704c6bec8727c073f197b82f29d0c21b1/screenshots/create%20%26%20config%20suricata%20conf%20in%20logstash%20conf.d.png>)
 
 ### 6.5 Configure filebeat.yml
 
