@@ -478,8 +478,6 @@ logstash: 192.168.56.70:5044...
   talk to server... OK
 ```
 
-![Filebeat Test Output](<https://github.com/Adio20102/Soc-Home-Lab/blob/a0991e215a734763ecf7f8eb32be40d6fa83d267/screenshots/verify%20filebeat%20connection.png>)
-
 Enable and start:
 
 ```bash
