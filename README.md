@@ -25,13 +25,13 @@ The lab simulates a realistic multi-stage attack (recon → exploitation → per
 
 | VM | IP | Role |
 |---|---|---|
-| Kali Linux | 192.168.56.10 | Attacker — Suricata, Splunk UF, Filebeat |
-| Metasploitable 2 | 192.168.56.20 | Victim — intentionally vulnerable, no agent |
-| Ubuntu S4 | 192.168.56.30 | Monitored Endpoint — Wazuh Agent |
-| Ubuntu S1 | 192.168.56.40 | Wazuh Manager + Dashboard |
-| Ubuntu S2 | 192.168.56.50 | Splunk Enterprise (Primary SIEM) |
-| Ubuntu S3 | 192.168.56.60 | TheHive + MISP + Cortex (IR Platform) |
-| Ubuntu S5 | 192.168.56.70 | ELK Stack — Elasticsearch + Logstash + Kibana |
+| Kali Linux | 192.168.56.101 | Attacker — Suricata, Splunk UF, Filebeat |
+| Metasploitable 2 | 192.168.56.102  | Victim — intentionally vulnerable, no agent |
+| Ubuntu S4 | 192.168.56.107 | Monitored Endpoint — Wazuh Agent |
+| Ubuntu S1 | 192.168.56.104 | Wazuh Manager + Dashboard |
+| Ubuntu S2 | 192.168.56.105 | Splunk Enterprise (Primary SIEM) |
+| Ubuntu S3 | 192.168.56.106 | TheHive + MISP + Cortex (IR Platform) |
+| Ubuntu S5 | 192.168.56.108 | ELK Stack — Elasticsearch + Logstash + Kibana |
 
 **Total resources:** 20GB RAM, 12 cores across 7 VMs
 
@@ -41,7 +41,7 @@ The lab simulates a realistic multi-stage attack (recon → exploitation → per
 
 ```
 ATTACK LAYER
-  Kali (192.168.56.10)
+  Kali (192.168.56.101)
       │
       ├── Suricata (NIDS) — watches all traffic on host-only interface
       │       │
