@@ -58,7 +58,7 @@ Before any exploitation, an attacker needs to know what services are running on 
 ### On Kali
 
 ```bash
-nmap -sV -A -O 192.168.56.20
+nmap -sV -A -O 192.168.56.102
 ```
 
 ### Expected Output
@@ -119,7 +119,7 @@ vsftpd 2.3.4 was distributed with a backdoor inserted into the source code in 20
 msfconsole
 search vsftpd
 use exploit/unix/ftp/vsftpd_234_backdoor
-set RHOSTS 192.168.56.20
+set RHOSTS 192.168.56.102
 run
 ```
 
@@ -176,7 +176,7 @@ Samba 3.0.20 (CVE-2007-2447) passes the username field directly to `/bin/sh` via
 
 ```bash
 use exploit/multi/samba/usermap_script
-set RHOSTS 192.168.56.20
+set RHOSTS 192.168.56.102
 run
 ```
 
@@ -285,7 +285,7 @@ hydra -l root -P /usr/share/wordlists/rockyou.txt ssh://192.168.56.30
 ```bash
 # Confirm block on S4
 sudo ufw status
-# Expected: DENY  192.168.56.10
+# Expected: DENY  192.168.56.101
 ```
 
 ### Detections
@@ -313,7 +313,7 @@ suricata.eve.event_type: "alert" AND suricata.eve.alert.signature: *SSH*
 ### Screenshots
 
 - `stage5a-bruteforce/wazuh-rule-5712.png` — Wazuh dashboard Rule 5712 alert
-- `stage5a-bruteforce/wazuh-active-response-block.png` — Active Response log showing 192.168.56.10 blocked
+- `stage5a-bruteforce/wazuh-active-response-block.png` — Active Response log showing 192.168.56.101 blocked
 - `stage5a-bruteforce/kali-hydra-timeout.png` — Kali terminal showing connection timeouts
 - `stage5a-bruteforce/splunk-ssh-alert.png` — Splunk SSH brute force alert
 - `stage5a-bruteforce/kibana-ssh-alert.png` — Kibana SSH alert
@@ -392,8 +392,8 @@ Create MISP event: `SOC-LAB-001: Multi-vector attack simulation`
 
 | IOC Type | Value | Tag |
 |---|---|---|
-| IP | 192.168.56.10 | attacker |
-| IP | 192.168.56.20 | victim |
+| IP | 192.168.56.101 | attacker |
+| IP | 192.168.56.102 | victim |
 | CVE | CVE-2011-2523 | vsftpd backdoor |
 | CVE | CVE-2007-2447 | Samba RCE |
 | Filename | /usr/bin/malicious_script | persistence |
@@ -423,9 +423,9 @@ Run Cortex analyser on the `malicious_script` file hash.
 
 | Type | Value | Tag |
 |---|---|---|
-| IP | 192.168.56.10 | attacker |
-| IP | 192.168.56.20 | victim-no-agent |
-| IP | 192.168.56.30 | monitored-endpoint |
+| IP | 192.168.56.101 | attacker |
+| IP | 192.168.56.102 | victim-no-agent |
+| IP | 192.168.56.107 | monitored-endpoint |
 | Filename | /usr/bin/malicious_script | persistence |
 | Username | backdooruser | persistence |
 | CVE | CVE-2011-2523 | exploited-vuln |
@@ -438,7 +438,7 @@ Run Cortex analyser on the `malicious_script` file hash.
 | 1. Identify attack vectors | CLOSED | vsftpd (CVE-2011-2523) + Samba (CVE-2007-2447) |
 | 2. Assess lateral movement | CLOSED | SSH brute force on S4 blocked by Wazuh Active Response |
 | 3. Identify persistence | CLOSED | backdooruser + malicious_script caught by Wazuh FIM with whodata |
-| 4. Containment | CLOSED | Wazuh auto-blocked 192.168.56.10; backdooruser + script removed |
+| 4. Containment | CLOSED | Wazuh auto-blocked 192.168.56.101; backdooruser + script removed |
 | 5. Pull IOCs into MISP | CLOSED | MISP event SOC-LAB-001 linked |
 | 6. Document and close | CLOSED | Full timeline documented |
 
@@ -546,7 +546,7 @@ Navigate to **Kibana → Dashboard → Create dashboard**
 
 [S5A] Kali → SSH brute force → Ubuntu S4
       Suricata: SSH alert → Splunk + ELK
-      Wazuh: Rule 5712 fires → Active Response → ufw blocks 192.168.56.10
+      Wazuh: Rule 5712 fires → Active Response → ufw blocks 192.168.56.101
 
 [S5B] Simulated persistence on S4 (direct terminal access)
       /etc/passwd modified    → Wazuh FIM: T1136 + whodata (root/bash)
