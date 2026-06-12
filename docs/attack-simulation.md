@@ -39,11 +39,11 @@ sudo ufw status                         # confirm port 443 open for dashboard
 
 | Dashboard | URL |
 |---|---|
-| Wazuh | https://192.168.56.40 |
-| Splunk | http://192.168.56.50:8000 |
-| Kibana | http://192.168.56.70:5601 |
-| TheHive | http://192.168.56.60:9000 *(WIP)* |
-| MISP | https://192.168.56.60 *(WIP)* |
+| Wazuh | https://192.168.56.104 |
+| Splunk | http://192.168.56.105:8000 |
+| Kibana | http://192.168.56.108:5601 |
+| TheHive | http://192.168.56.106:9000 *(WIP)* |
+| MISP | https://192.168.56.106 *(WIP)* |
 
 ---
 
@@ -272,14 +272,14 @@ The attacker pivots to Ubuntu S4 (the monitored endpoint with a Wazuh Agent) and
 ### On Kali
 
 ```bash
-hydra -l root -P /usr/share/wordlists/rockyou.txt ssh://192.168.56.30
+hydra -l root -P /usr/share/wordlists/rockyou.txt ssh://192.168.56.107
 ```
 
 ### What Wazuh Does Automatically
 
 1. Wazuh Agent reads failed login events from `/var/log/auth.log` on S4
 2. Rule 5712 fires: threshold of authentication failures from a single source crossed
-3. Active Response module calls `firewall-drop` — executes `ufw` to block `192.168.56.10` on S4
+3. Active Response module calls `firewall-drop` — executes `ufw` to block `192.168.56.101` on S4
 4. Hydra attempts on Kali begin timing out
 
 ```bash
