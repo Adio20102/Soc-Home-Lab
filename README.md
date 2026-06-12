@@ -51,16 +51,16 @@ ATTACK LAYER
       │       └── eve.json → Filebeat → Logstash → Elasticsearch → Kibana S5
       │                                             index: suricata-*
       │
-      └── Metasploit → exploits → Metasploitable (192.168.56.20)
+      └── Metasploit → exploits → Metasploitable (192.168.56.102)
 
 ENDPOINT LAYER
-  Ubuntu S4 (192.168.56.30)
+  Ubuntu S4 (192.168.56.107)
       └── Wazuh Agent → FIM + whodata + Active Response + Vuln Detection
-              └── Wazuh Manager S1 (192.168.56.40)
+              └── Wazuh Manager S1 (192.168.56.104)
                       └── Wazuh Dashboard → MITRE ATT&CK tagged alerts
 
 IR LAYER (WIP)
-  Ubuntu S3 (192.168.56.60)
+  Ubuntu S3 (192.168.56.106)
       └── TheHive ←→ MISP ←→ Cortex
               ↑ cases fed from Wazuh + Splunk alerts
 ```
